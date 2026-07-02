@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>郝灵广 - 个人主页</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      --blue: #093175;
+      --blue-light: #1a4a8a;
+      --blue-dark: #062050;
+      --blue-bg: #e8f0fe;
       --navy: #0f172a;
       --slate: #334155;
       --muted: #64748b;
       --light: #94a3b8;
-      --border: #e2e8f0;
-      --bg: #fafbfc;
-      --off: #f1f5f9;
-      --gold: #78350f;
-      --gold-light: #92400e;
-      --serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+      --border: #d0d7de;
+      --bg: #f5f6f8;
+      --white: #ffffff;
       --sans: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,504 +26,378 @@
     body {
       font-family: var(--sans); background: var(--bg); color: var(--slate);
       line-height: 1.8; -webkit-font-smoothing: antialiased;
-      background-image:
-        radial-gradient(ellipse at 20% 0%, rgba(120,53,15,0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 100%, rgba(15,23,42,0.03) 0%, transparent 50%);
+      min-height: 100vh; display: flex; flex-direction: column;
     }
 
     /* ── Top Bar ── */
     .topbar {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(1.2);
-      border-bottom: 1px solid rgba(0,0,0,0.05); transition: box-shadow .4s, background .3s;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .topbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); background: rgba(255,255,255,0.95); }
     .topbar-inner {
-      max-width: 1000px; margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 56px; height: 60px;
+      padding: 0 32px; height: 50px;
     }
     .topbar-name {
-      font-family: var(--serif); font-size: 17px; font-weight: 700;
-      color: var(--navy); letter-spacing: .5px;
+      font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 1px;
     }
-    .topbar-nav { display: flex; gap: 28px; list-style: none; }
+    .topbar-nav { display: flex; gap: 4px; list-style: none; }
     .topbar-nav a {
-      text-decoration: none; color: var(--muted); font-size: 14px;
-      font-weight: 400; letter-spacing: .3px; transition: color .25s;
-      position: relative; padding-bottom: 2px;
-    }
-    .topbar-nav a::after {
-      content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 1.5px;
-      background: var(--gold); transition: all .3s ease; transform: translateX(-50%);
-    }
-    .topbar-nav a:hover { color: var(--navy); }
-    .topbar-nav a:hover::after { width: 100%; }
-
-    /* ── Header ── */
-    .header {
-      padding: 160px 56px 90px; position: relative; overflow: hidden;
-      background: linear-gradient(135deg, #fafbfc 0%, #f8f6f3 50%, #f5f1ec 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    .header::before {
-      content: ''; position: absolute; top: -80px; right: -80px;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(120,53,15,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .header::after {
-      content: ''; position: absolute; bottom: -60px; left: 10%;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(15,23,42,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .header-inner {
-      max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;
-      display: flex; gap: 48px; align-items: center;
-    }
-    .header-photo {
-      flex-shrink: 0; width: 160px; height: 160px; border-radius: 16px;
-      object-fit: cover; border: 3px solid rgba(255,255,255,0.8);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      transition: transform .4s ease, box-shadow .4s ease;
-    }
-    .header-photo:hover { transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-    .header-text { flex: 1; }
-    .header h1 {
-      font-family: var(--serif); font-size: 44px; font-weight: 700;
-      color: var(--navy); margin-bottom: 16px; letter-spacing: 3px;
-    }
-    .header .affiliation {
-      font-size: 17px; color: var(--muted); margin-bottom: 24px; line-height: 1.8;
-    }
-    .research-line {
-      font-size: 15px; color: var(--slate); margin-bottom: 32px;
-      padding: 18px 24px; border-radius: 8px;
-      background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.04);
-      line-height: 1.8; backdrop-filter: blur(8px);
-    }
-    .research-line span {
-      color: var(--gold); font-weight: 600;
-      background: linear-gradient(135deg, #78350f, #92400e);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .header-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .header-links a {
-      text-decoration: none; color: var(--muted); font-size: 14px;
-      display: flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border-radius: 6px;
-      background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.04);
+      text-decoration: none; color: rgba(255,255,255,0.8); font-size: 14px;
+      font-weight: 400; padding: 8px 16px; border-radius: 4px;
       transition: all .25s;
     }
-    .header-links a:hover { color: var(--navy); background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
+    .topbar-nav a:hover { color: var(--white); background: rgba(255,255,255,0.15); }
 
-    /* ── Main ── */
-    .main { max-width: 1000px; margin: 0 auto; padding: 0 56px; }
-
-    /* ── Section ── */
-    .sec { padding: 72px 0; }
-    .sec + .sec { border-top: 1px solid rgba(0,0,0,0.05); }
-    .sec-label {
-      font-family: var(--serif); font-size: 13px; font-weight: 600;
-      color: var(--gold); text-transform: uppercase; letter-spacing: 4px;
-      margin-bottom: 36px; display: flex; align-items: center; gap: 16px;
-    }
-    .sec-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(90deg, rgba(120,53,15,0.15), transparent);
+    /* ── Main Container ── */
+    .container {
+      max-width: 1100px; margin: 24px auto; padding: 0 16px; flex: 1;
+      display: flex; gap: 20px;
     }
 
-    /* ── Education ── */
-    .edu-timeline { position: relative; padding-left: 28px; }
-    .edu-timeline::before {
-      content: ''; position: absolute; left: 4px; top: 8px; bottom: 8px;
-      width: 1.5px; background: linear-gradient(180deg, var(--border), rgba(226,232,240,0.3));
-    }
-    .edu-item {
-      position: relative; padding: 0 0 36px 0;
-    }
-    .edu-item:last-child { padding-bottom: 0; }
-    .edu-item::before {
-      content: ''; position: absolute; left: -28px; top: 8px;
-      width: 9px; height: 9px; border-radius: 50%;
-      background: var(--bg); border: 2px solid var(--gold);
-      transition: all .3s;
-    }
-    .edu-item:hover::before { background: var(--gold); transform: scale(1.2); }
-    .edu-year {
-      font-size: 13px; color: var(--light); font-weight: 500;
-      margin-bottom: 4px; font-variant-numeric: tabular-nums;
-    }
-    .edu-detail h3 { font-size: 16px; font-weight: 600; color: var(--navy); }
-    .edu-detail .school { font-size: 14px; color: var(--muted); margin-top: 2px; }
+    /* ── Left Column ── */
+    .col-left { width: 320px; flex-shrink: 0; }
 
-    /* ── Research Interests ── */
-    .interests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .interest-item {
-      padding: 28px 24px; border-radius: 12px;
-      background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.04);
-      transition: all .35s ease; position: relative; overflow: hidden;
+    /* ── Profile Card ── */
+    .profile-card {
+      background: var(--white); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
-    .interest-item::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      opacity: 0; transition: opacity .35s;
+    .profile-photo-wrap {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      padding: 24px; text-align: center;
     }
-    .interest-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
-    .interest-item:hover::before { opacity: 1; }
-    .interest-item h3 {
-      font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 10px;
+    .profile-photo {
+      width: 140px; height: 170px; border-radius: 6px;
+      object-fit: cover; border: 3px solid var(--white);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .interest-item p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .profile-name {
+      font-size: 22px; font-weight: 700; color: var(--white);
+      margin-top: 12px; letter-spacing: 2px;
+    }
+    .profile-info {
+      padding: 20px;
+    }
+    .profile-info .info-title {
+      font-size: 15px; font-weight: 700; color: var(--blue);
+      padding-bottom: 10px; border-bottom: 2px solid var(--blue);
+      margin-bottom: 14px;
+    }
+    .profile-info ul { list-style: none; }
+    .profile-info li {
+      padding: 6px 0; font-size: 14px; color: var(--slate);
+      display: flex; gap: 8px; line-height: 1.6;
+    }
+    .profile-info li .label {
+      color: var(--muted); white-space: nowrap; min-width: 70px; flex-shrink: 0;
+    }
+    .profile-info li .value { color: var(--navy); font-weight: 500; }
+
+    /* ── Section Card ── */
+    .section-card {
+      background: var(--white); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-top: 16px;
+    }
+    .section-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      padding: 10px 20px; font-size: 15px; font-weight: 700;
+      color: var(--white); letter-spacing: 1px;
+    }
+    .section-body { padding: 16px 20px; }
+    .section-body ul { list-style: none; }
+    .section-body li {
+      padding: 8px 0; font-size: 14px; color: var(--slate);
+      border-bottom: 1px dashed var(--border); line-height: 1.7;
+    }
+    .section-body li:last-child { border-bottom: none; }
+    .section-body li .num { color: var(--light); font-weight: 600; margin-right: 6px; }
+
+    /* ── Right Column ── */
+    .col-right { flex: 1; min-width: 0; }
+
+    /* ── Bio Card ── */
+    .bio-card {
+      background: var(--white); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .bio-content {
+      padding: 20px; font-size: 14px; line-height: 2; color: var(--slate);
+      text-indent: 2em;
+    }
 
     /* ── Publications ── */
-    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-list { display: flex; flex-direction: column; }
     .pub-item {
-      padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.04);
-      transition: background .2s;
+      padding: 12px 0; border-bottom: 1px dashed var(--border);
+      font-size: 14px; line-height: 1.7;
     }
     .pub-item:last-child { border-bottom: none; }
-    .pub-num {
-      font-family: 'Georgia', serif; font-size: 14px; color: var(--light);
-      margin-right: 12px; font-style: italic;
-    }
-    .pub-title {
-      font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.65;
-    }
-    .pub-authors { font-size: 13px; color: var(--muted); margin: 6px 0 4px; }
+    .pub-num { color: var(--light); font-weight: 600; margin-right: 6px; }
+    .pub-title { font-weight: 600; color: var(--navy); }
+    .pub-authors { color: var(--muted); font-size: 13px; margin: 2px 0; }
     .pub-authors strong { color: var(--slate); font-weight: 600; }
-    .pub-venue { font-size: 13px; color: var(--muted); }
-    .pub-venue em { font-style: italic; }
+    .pub-venue { color: var(--muted); font-size: 13px; font-style: italic; }
     .pub-badge {
-      display: inline-block; font-size: 11px; padding: 2px 10px;
-      border: 1px solid; border-radius: 4px; margin-left: 8px;
-      font-weight: 500; vertical-align: middle; letter-spacing: .3px;
+      display: inline-block; font-size: 11px; padding: 1px 8px;
+      border: 1px solid; border-radius: 3px; margin-left: 8px;
+      font-weight: 500; font-style: normal; vertical-align: middle;
     }
-    .pub-badge.top { color: var(--gold); border-color: #d6c4a0; background: linear-gradient(135deg, #fefcf8, #faf5eb); }
-    .pub-badge.mid { color: #166534; border-color: #a7d8b8; background: linear-gradient(135deg, #f0fdf4, #e8f8ec); }
-    .pub-badge.conf { color: #1e40af; border-color: #a8c8e8; background: linear-gradient(135deg, #eff6ff, #e5eef8); }
+    .pub-badge.top { color: var(--blue); border-color: #a8c8e8; background: var(--blue-bg); }
+    .pub-badge.mid { color: #166534; border-color: #a7d8b8; background: #f0fdf4; }
+    .pub-badge.conf { color: #1e40af; border-color: #bfdbfe; background: #eff6ff; }
 
     /* ── Patent ── */
     .patent-item {
-      padding: 20px 24px; margin-bottom: 12px; border-radius: 10px;
-      font-size: 15px; line-height: 1.8; color: var(--slate);
-      background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.04);
-      transition: all .3s;
+      padding: 10px 0; border-bottom: 1px dashed var(--border);
+      font-size: 14px; line-height: 1.8; color: var(--slate);
     }
-    .patent-item:hover { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
-    .patent-item:last-child { margin-bottom: 0; }
-    .patent-item .pnum { color: var(--light); font-weight: 600; margin-right: 8px; }
+    .patent-item:last-child { border-bottom: none; }
+    .patent-item .pnum { color: var(--light); font-weight: 600; margin-right: 6px; }
 
     /* ── Projects ── */
-    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .proj-item {
-      padding: 22px 24px; border-radius: 10px;
-      background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.04);
-      display: flex; flex-direction: column; gap: 10px;
-      transition: all .3s;
+      padding: 10px 0; border-bottom: 1px dashed var(--border);
     }
-    .proj-item:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .proj-item:last-child { border-bottom: none; }
     .proj-role {
-      font-size: 12px; font-weight: 600; padding: 3px 12px;
-      border-radius: 4px; white-space: nowrap; align-self: flex-start;
+      display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 10px;
+      border-radius: 3px; margin-bottom: 4px;
     }
-    .proj-role.host { color: var(--gold); background: linear-gradient(135deg, #fefcf8, #faf5eb); border: 1px solid #d6c4a0; }
-    .proj-role.part { color: #1e40af; background: linear-gradient(135deg, #eff6ff, #e5eef8); border: 1px solid #a8c8e8; }
-    .proj-role.award { color: #166534; background: linear-gradient(135deg, #f0fdf4, #e8f8ec); border: 1px solid #a7d8b8; }
-    .proj-item h3 { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.5; }
-    .proj-item .meta { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .proj-role.host { color: var(--blue); background: var(--blue-bg); border: 1px solid #a8c8e8; }
+    .proj-role.part { color: #1e40af; background: #eff6ff; border: 1px solid #bfdbfe; }
+    .proj-role.award { color: #166534; background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .proj-item h3 { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .proj-item .meta { font-size: 13px; color: var(--muted); }
+
+    /* ── Contact ── */
+    .contact-item {
+      padding: 8px 0; font-size: 14px; color: var(--slate);
+      border-bottom: 1px dashed var(--border);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item .c-label { color: var(--muted); margin-right: 8px; }
+    .contact-item a { color: var(--blue); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
 
     /* ── Footer ── */
     footer {
-      max-width: 1000px; margin: 0 auto; padding: 48px 56px;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      font-size: 12px; color: var(--light); text-align: center;
-      letter-spacing: .5px; position: relative;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      padding: 20px 32px; text-align: center;
+      font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 24px;
     }
-    footer::before {
-      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 60px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
+    footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .topbar-inner, .main, footer { padding-left: 24px; padding-right: 24px; }
-      .header { padding: 120px 24px 60px; }
-      .header h1 { font-size: 32px; }
-      .header-inner { flex-direction: column; text-align: center; gap: 24px; }
-      .header-photo { width: 120px; height: 120px; }
-      .topbar-nav { gap: 14px; }
-      .topbar-nav a { font-size: 13px; }
-      .interests { grid-template-columns: 1fr; gap: 16px; }
-      .proj-grid { grid-template-columns: 1fr; }
-      .edu-timeline { padding-left: 20px; }
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      .col-left { width: 100%; }
+      .topbar-nav { gap: 2px; }
+      .topbar-nav a { padding: 6px 10px; font-size: 13px; }
     }
-
-    /* ── Animations ── */
-    .fade-in {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .fade-in:nth-child(2) { transition-delay: .1s; }
-    .fade-in:nth-child(3) { transition-delay: .2s; }
-    .fade-in:nth-child(4) { transition-delay: .3s; }
   </style>
 </head>
 <body>
 
 <!-- Top Bar -->
-<div class="topbar" id="topbar">
+<div class="topbar">
   <div class="topbar-inner">
-    <div class="topbar-name">郝灵广</div>
+    <div class="topbar-name">太原理工大学 · 郝灵广</div>
     <ul class="topbar-nav">
-      <li><a href="#education">学历</a></li>
+      <li><a href="#education">教育经历</a></li>
       <li><a href="#research">研究方向</a></li>
-      <li><a href="#publications">论文</a></li>
+      <li><a href="#publications">论文成果</a></li>
       <li><a href="#patents">专利</a></li>
       <li><a href="#projects">项目与荣誉</a></li>
     </ul>
   </div>
 </div>
 
-<!-- Header -->
-<div class="header">
-  <div class="header-inner">
-    <img src="photo.jpg" alt="郝灵广" class="header-photo">
-    <div class="header-text">
-    <h1>郝灵广</h1>
-    <div class="affiliation">
-      太原理工大学（Taiyuan University of Technology, TYUT）<br>
-      控制科学与工程 · 博士
-    </div>
-    <div class="research-line">
-      <span>研究方向</span>&nbsp;&nbsp;可信联邦学习 · 计算机视觉 · 对抗攻击与防御
-    </div>
-    <div class="header-links">
-      <a href="mailto:haolingguang@tyut.edu.cn">&#9993; haolingguang@tyut.edu.cn</a>
-      <a href="tel:18317089686">&#9742; 18317089686</a>
-      <a href="#">&#128214; Google Scholar</a>
-      <a href="#">&#128187; GitHub</a>
-    </div>
-    <div class="affiliation" style="margin-top: 12px; font-size: 14px; color: var(--light);">
-      &#9878; 太原市万柏林区迎泽西大街79号，太原理工大学，电机馆302室
-    </div>
-    </div>
-  </div>
-</div>
+<!-- Main Container -->
+<div class="container">
 
-<!-- Main Content -->
-<div class="main">
+  <!-- Left Column -->
+  <div class="col-left">
 
-  <!-- Education -->
-  <div class="sec" id="education">
-    <div class="sec-label">Education</div>
-    <div class="edu-timeline">
-      <div class="edu-item fade-in">
-        <div class="edu-year">2020.03 — 2025.03</div>
-        <div class="edu-detail">
-          <h3>控制科学与工程 · 博士</h3>
-          <div class="school">东华大学</div>
-        </div>
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="profile-photo-wrap">
+        <img src="photo.jpg" alt="郝灵广" class="profile-photo">
+        <div class="profile-name">郝灵广</div>
       </div>
-      <div class="edu-item fade-in">
-        <div class="edu-year">2018.09 — 2020.03</div>
-        <div class="edu-detail">
-          <h3>电力电子与电力传动 · 硕转博</h3>
-          <div class="school">东华大学</div>
-        </div>
-      </div>
-      <div class="edu-item fade-in">
-        <div class="edu-year">2014.09 — 2018.06</div>
-        <div class="edu-detail">
-          <h3>电气工程及其自动化 · 学士</h3>
-          <div class="school">东华大学</div>
-        </div>
+      <div class="profile-info">
+        <div class="info-title">基本信息</div>
+        <ul>
+          <li><span class="label">职 称 :</span><span class="value">博士</span></li>
+          <li><span class="label">单 位 :</span><span class="value">太原理工大学</span></li>
+          <li><span class="label">学 科 :</span><span class="value">控制科学与工程</span></li>
+          <li><span class="label">邮 箱 :</span><span class="value"><a href="mailto:haolingguang@tyut.edu.cn">haolingguang@tyut.edu.cn</a></span></li>
+          <li><span class="label">电 话 :</span><span class="value"><a href="tel:18317089686">18317089686</a></span></li>
+          <li><span class="label">地 址 :</span><span class="value">太原理工大学电机馆302室</span></li>
+        </ul>
       </div>
     </div>
-  </div>
 
-  <!-- Research Interests -->
-  <div class="sec" id="research">
-    <div class="sec-label">Research Interests</div>
-    <div class="interests">
-      <div class="interest-item fade-in">
-        <h3>可信联邦学习</h3>
-        <p>联邦学习框架下的安全威胁与防御机制，包括多目标后门攻击、基于隐私推理的后门攻击及鲁棒性增强方法。</p>
-      </div>
-      <div class="interest-item fade-in">
-        <h3>计算机视觉</h3>
-        <p>图像识别、目标检测、图像生成与去噪等视觉任务的深度学习方法研究。</p>
-      </div>
-      <div class="interest-item fade-in">
-        <h3>对抗攻击与防御</h3>
-        <p>对抗样本可迁移性提升、多代理模型攻击、随机串行攻击策略及防御框架设计。</p>
+    <!-- Education -->
+    <div class="section-card" id="education">
+      <div class="section-header">教育经历</div>
+      <div class="section-body">
+        <ul>
+          <li><span class="num">[1].</span>2020.03 — 2025.03<br>太原理工大学（东华大学）&nbsp;|&nbsp;控制科学与工程&nbsp;|&nbsp;博士</li>
+          <li><span class="num">[2].</span>2018.09 — 2020.03<br>东华大学&nbsp;|&nbsp;电力电子与电力传动&nbsp;|&nbsp;硕转博</li>
+          <li><span class="num">[3].</span>2014.09 — 2018.06<br>东华大学&nbsp;|&nbsp;电气工程及其自动化&nbsp;|&nbsp;学士</li>
+        </ul>
       </div>
     </div>
+
+    <!-- Research Interests -->
+    <div class="section-card" id="research">
+      <div class="section-header">研究方向</div>
+      <div class="section-body">
+        <ul>
+          <li><span class="num">[1].</span>可信联邦学习：联邦学习框架下的安全威胁与防御机制</li>
+          <li><span class="num">[2].</span>计算机视觉：图像识别、目标检测、图像生成与去噪</li>
+          <li><span class="num">[3].</span>对抗攻击与防御：对抗样本可迁移性提升及防御框架设计</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section-card">
+      <div class="section-header">联系方式</div>
+      <div class="section-body">
+        <div class="contact-item"><span class="c-label">邮 箱 :</span><a href="mailto:haolingguang@tyut.edu.cn">haolingguang@tyut.edu.cn</a></div>
+        <div class="contact-item"><span class="c-label">电 话 :</span><a href="tel:18317089686">18317089686</a></div>
+        <div class="contact-item"><span class="c-label">地 址 :</span>太原市万柏林区迎泽西大街79号，太原理工大学，电机馆302室</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Publications -->
-  <div class="sec" id="publications">
-    <div class="sec-label">Publications</div>
-    <div class="pub-list">
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[1]</span>
-          Multi-target federated backdoor attack based on feature aggregation
-          <span class="pub-badge top">SCI 一区 TOP · CCF B</span>
-        </div>
-        <div class="pub-authors">Lingguag Hao, <strong>Kuangrong Hao*</strong>, Bing Wei, and Xuesong Tang</div>
-        <div class="pub-venue"><em>Pattern Recognition</em>, 2026, 172: Part A</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[2]</span>
-          A hypothetical defenses-based training framework for generating transferable adversarial examples
-          <span class="pub-badge top">SCI 一区 TOP · CCF C</span>
-        </div>
-        <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Yaochu Jin, and Hongzhi Zhao</div>
-        <div class="pub-venue"><em>Knowledge-Based Systems</em>, 2024, 305: 112602</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[3]</span>
-          Boosting the transferability of adversarial examples via stochastic serial attack
-          <span class="pub-badge top">SCI 一区 TOP · CCF B</span>
-        </div>
-        <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
-        <div class="pub-venue"><em>Neural Networks</em>, 2022, 150: 58–67</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[4]</span>
-          A Multi-Proxy Model Based Transfer Attack via Multi-Objective Optimization
-          <span class="pub-badge conf">会议论文</span>
-        </div>
-        <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Zhibo Cao, and Lei Chen</div>
-        <div class="pub-venue">IEEE 14th Data Driven Control and Learning Systems (DDCLS), 2025, pp. 1234–1239</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[5]</span>
-          Remix: Towards the Transferability of Adversarial Examples
-          <span class="pub-badge top">SCI 一区 TOP · CCF B</span>
-        </div>
-        <div class="pub-authors">Hongzhi Zhao, <strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, and Xin Cai</div>
-        <div class="pub-venue"><em>Neural Networks</em>, 2023, 163: 367–378</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[6]</span>
-          Show, tell and rectify: Boost image caption generation via an output rectifier
-          <span class="pub-badge mid">SCI 二区 TOP · CCF C</span>
-        </div>
-        <div class="pub-authors">Guowei Ge, Yufeng Han, <strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
-        <div class="pub-venue"><em>Neurocomputing</em>, 2024, 585: 127651</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[7]</span>
-          MS-FTSCNN: An EEG emotion recognition method from the combination of multi-domain features
-          <span class="pub-badge mid">SCI 二区</span>
-        </div>
-        <div class="pub-authors">Feifei Li, Kuangrong Hao, <strong>Bing Wei*</strong>, Lingguang Hao, and Lihong Ren</div>
-        <div class="pub-venue"><em>Biomedical Signal Processing and Control</em>, 2024, 88: 105690</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[8]</span>
-          Causal inference of multivariate time series in complex industrial systems
-          <span class="pub-badge top">SCI 一区 TOP · CCF B</span>
-        </div>
-        <div class="pub-authors">Xiaoxue Liang, <strong>Kuangrong Hao*</strong>, Lei Chen, Xin Cai, and Lingguang Hao</div>
-        <div class="pub-venue"><em>Advanced Engineering Informatics</em>, 2024, 59: 102320</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[9]</span>
-          IDC: Boost Text-to-image Retrieval via Indirect and Direct Connections
-          <span class="pub-badge conf">CCF B · 会议论文</span>
-        </div>
-        <div class="pub-authors">Guowei Ge, <strong>Kuangrong Hao*</strong>, and Lingguang Hao</div>
-        <div class="pub-venue">LREC-COLING, 2024</div>
-      </div>
-      <div class="pub-item fade-in">
-        <div class="pub-title">
-          <span class="pub-num">[10]</span>
-          Backdoor Attack Based on Privacy Inference against Federated Learning
-          <span class="pub-badge conf">会议论文</span>
-        </div>
-        <div class="pub-authors">Do Wu, <strong>Lingguang Hao</strong>, Bing Wei*, Kuangrong Hao, Tao Han, and Langping He</div>
-        <div class="pub-venue">7th International Symposium on Autonomous Systems (ISAS), 2024</div>
-      </div>
-    </div>
-  </div>
+  <!-- Right Column -->
+  <div class="col-right">
 
-  <!-- Patents -->
-  <div class="sec" id="patents">
-    <div class="sec-label">Patents</div>
-    <div class="patent-item fade-in">
-      <span class="pnum">[1]</span> 郝矿荣，<strong>郝灵广</strong>，隗兵，唐雪嵩. 一种基于特征聚合的个性化联邦学习的后门攻击方法. 2024. （已受理，公开号：CN119323697A）
+    <!-- Bio -->
+    <div class="bio-card">
+      <div class="section-header">个人简介</div>
+      <div class="bio-content">
+        郝灵广，太原理工大学控制科学与工程专业博士。研究方向为可信联邦学习、计算机视觉及对抗攻击与防御。在 Pattern Recognition、Knowledge-Based Systems、Neural Networks 等 SCI 一区 TOP 期刊发表多篇论文，主持东华大学博士研究生学位论文创新资助项目，参与国家重点研发计划、上海市自然科学基金等项目。
+      </div>
     </div>
-    <div class="patent-item fade-in">
-      <span class="pnum">[2]</span> 郝矿荣，杜少帅，张海超，<strong>郝灵广</strong>，隗兵，唐雪嵩. 基于 YOLO 的目标检测模型训练方法及其应用和装置. 2022. （已受理，公开号：CN115527089A）
-    </div>
-  </div>
 
-  <!-- Projects & Honors -->
-  <div class="sec" id="projects">
-    <div class="sec-label">Projects &amp; Honors</div>
-    <div class="proj-grid">
-      <div class="proj-item fade-in">
-        <div class="proj-role host">主持</div>
-        <h3>基于深度神经网络的图像识别系统安全性研究</h3>
-        <div class="meta">东华大学博士研究生学位论文创新资助项目 (CUSF-DH-D-2022081) · 2022–2024</div>
-      </div>
-      <div class="proj-item fade-in">
-        <div class="proj-role part">参与</div>
-        <h3>多模态测试系统开发</h3>
-        <div class="meta">企业横向项目 · 2024–2026（主要参与人员）</div>
-      </div>
-      <div class="proj-item fade-in">
-        <div class="proj-role part">参与</div>
-        <h3>聚酯、聚酰胺聚合、纺丝全流程计算机模拟</h3>
-        <div class="meta">国家重点研发计划 (2016YFB302701) · 2016–2021</div>
-      </div>
-      <div class="proj-item fade-in">
-        <div class="proj-role part">参与</div>
-        <h3>仿人多气囊并联柔性机器人的多模态传感与协同伺服控制</h3>
-        <div class="meta">上海市自然科学基金 · 2020–2023</div>
-      </div>
-      <div class="proj-item fade-in">
-        <div class="proj-role award">荣誉</div>
-        <h3>"华为杯"第十八届全国研究生数学建模竞赛 三等奖</h3>
-        <div class="meta">2021</div>
-      </div>
-      <div class="proj-item fade-in">
-        <div class="proj-role award">荣誉</div>
-        <h3>东华大学五四表彰信息科学与技术学院"优秀团员"称号</h3>
-        <div class="meta">2022</div>
+    <!-- Publications -->
+    <div class="section-card" id="publications">
+      <div class="section-header">论文成果</div>
+      <div class="section-body">
+        <div class="pub-list">
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[1]</span>Multi-target federated backdoor attack based on feature aggregation <span class="pub-badge top">SCI 一区 TOP · CCF B</span></div>
+            <div class="pub-authors">Lingguag Hao, <strong>Kuangrong Hao*</strong>, Bing Wei, and Xuesong Tang</div>
+            <div class="pub-venue">Pattern Recognition, 2026, 172: Part A</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[2]</span>A hypothetical defenses-based training framework for generating transferable adversarial examples <span class="pub-badge top">SCI 一区 TOP · CCF C</span></div>
+            <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Yaochu Jin, and Hongzhi Zhao</div>
+            <div class="pub-venue">Knowledge-Based Systems, 2024, 305: 112602</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[3]</span>Boosting the transferability of adversarial examples via stochastic serial attack <span class="pub-badge top">SCI 一区 TOP · CCF B</span></div>
+            <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
+            <div class="pub-venue">Neural Networks, 2022, 150: 58–67</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[4]</span>A Multi-Proxy Model Based Transfer Attack via Multi-Objective Optimization <span class="pub-badge conf">会议论文</span></div>
+            <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Zhibo Cao, and Lei Chen</div>
+            <div class="pub-venue">IEEE DDCLS, 2025, pp. 1234–1239</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[5]</span>Remix: Towards the Transferability of Adversarial Examples <span class="pub-badge top">SCI 一区 TOP · CCF B</span></div>
+            <div class="pub-authors">Hongzhi Zhao, <strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, and Xin Cai</div>
+            <div class="pub-venue">Neural Networks, 2023, 163: 367–378</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[6]</span>Show, tell and rectify: Boost image caption generation via an output rectifier <span class="pub-badge mid">SCI 二区 TOP · CCF C</span></div>
+            <div class="pub-authors">Guowei Ge, Yufeng Han, <strong>Lingguang Hao</strong>, Kuangrong Hao*, et al.</div>
+            <div class="pub-venue">Neurocomputing, 2024, 585: 127651</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[7]</span>MS-FTSCNN: An EEG emotion recognition method <span class="pub-badge mid">SCI 二区</span></div>
+            <div class="pub-authors">Feifei Li, Kuangrong Hao, <strong>Bing Wei*</strong>, Lingguang Hao, et al.</div>
+            <div class="pub-venue">Biomedical Signal Processing and Control, 2024, 88: 105690</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[8]</span>Causal inference of multivariate time series in complex industrial systems <span class="pub-badge top">SCI 一区 TOP · CCF B</span></div>
+            <div class="pub-authors">Xiaoxue Liang, <strong>Kuangrong Hao*</strong>, Lei Chen, et al.</div>
+            <div class="pub-venue">Advanced Engineering Informatics, 2024, 59: 102320</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[9]</span>IDC: Boost Text-to-image Retrieval via Indirect and Direct Connections <span class="pub-badge conf">CCF B · 会议</span></div>
+            <div class="pub-authors">Guowei Ge, <strong>Kuangrong Hao*</strong>, and Lingguang Hao</div>
+            <div class="pub-venue">LREC-COLING, 2024</div>
+          </div>
+          <div class="pub-item">
+            <div class="pub-title"><span class="pub-num">[10]</span>Backdoor Attack Based on Privacy Inference against Federated Learning <span class="pub-badge conf">会议论文</span></div>
+            <div class="pub-authors">Do Wu, <strong>Lingguang Hao</strong>, Bing Wei*, et al.</div>
+            <div class="pub-venue">ISAS, 2024</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
+    <!-- Patents -->
+    <div class="section-card" id="patents">
+      <div class="section-header">专利成果</div>
+      <div class="section-body">
+        <div class="patent-item"><span class="pnum">[1]</span>郝矿荣，<strong>郝灵广</strong>，隗兵，唐雪嵩. 一种基于特征聚合的个性化联邦学习的后门攻击方法. 2024.（已受理，CN119323697A）</div>
+        <div class="patent-item"><span class="pnum">[2]</span>郝矿荣，杜少帅，张海超，<strong>郝灵广</strong>，隗兵，唐雪嵩. 基于 YOLO 的目标检测模型训练方法及其应用和装置. 2022.（已受理，CN115527089A）</div>
+      </div>
+    </div>
+
+    <!-- Projects & Honors -->
+    <div class="section-card" id="projects">
+      <div class="section-header">项目与荣誉</div>
+      <div class="section-body">
+        <div class="proj-item">
+          <div class="proj-role host">主持</div>
+          <h3>基于深度神经网络的图像识别系统安全性研究</h3>
+          <div class="meta">东华大学博士研究生学位论文创新资助项目 (CUSF-DH-D-2022081) · 2022–2024</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-role part">参与</div>
+          <h3>多模态测试系统开发</h3>
+          <div class="meta">企业横向项目 · 2024–2026（主要参与人员）</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-role part">参与</div>
+          <h3>聚酯、聚酰胺聚合、纺丝全流程计算机模拟</h3>
+          <div class="meta">国家重点研发计划 (2016YFB302701) · 2016–2021</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-role part">参与</div>
+          <h3>仿人多气囊并联柔性机器人的多模态传感与协同伺服控制</h3>
+          <div class="meta">上海市自然科学基金 · 2020–2023</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-role award">荣誉</div>
+          <h3>"华为杯"第十八届全国研究生数学建模竞赛 三等奖</h3>
+          <div class="meta">2021</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-role award">荣誉</div>
+          <h3>东华大学五四表彰信息科学与技术学院"优秀团员"称号</h3>
+          <div class="meta">2022</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <footer>
-  &copy; 2026 郝灵广 · 太原理工大学（Taiyuan University of Technology）
+  &copy; 2026 太原理工大学（Taiyuan University of Technology） · 郝灵广
 </footer>
-
-<script>
-  const tb = document.getElementById('topbar');
-  window.addEventListener('scroll', () => tb.classList.toggle('scrolled', window.scrollY > 10));
-  const obs = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-</script>
 
 </body>
 </html>
