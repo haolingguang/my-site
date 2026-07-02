@@ -77,7 +77,18 @@
       background: radial-gradient(circle, rgba(15,23,42,0.04) 0%, transparent 70%);
       pointer-events: none;
     }
-    .header-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .header-inner {
+      max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;
+      display: flex; gap: 48px; align-items: center;
+    }
+    .header-photo {
+      flex-shrink: 0; width: 160px; height: 160px; border-radius: 16px;
+      object-fit: cover; border: 3px solid rgba(255,255,255,0.8);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .header-photo:hover { transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+    .header-text { flex: 1; }
     .header h1 {
       font-family: var(--serif); font-size: 44px; font-weight: 700;
       color: var(--navy); margin-bottom: 16px; letter-spacing: 3px;
@@ -241,6 +252,8 @@
       .topbar-inner, .main, footer { padding-left: 24px; padding-right: 24px; }
       .header { padding: 120px 24px 60px; }
       .header h1 { font-size: 32px; }
+      .header-inner { flex-direction: column; text-align: center; gap: 24px; }
+      .header-photo { width: 120px; height: 120px; }
       .topbar-nav { gap: 14px; }
       .topbar-nav a { font-size: 13px; }
       .interests { grid-template-columns: 1fr; gap: 16px; }
@@ -278,6 +291,8 @@
 <!-- Header -->
 <div class="header">
   <div class="header-inner">
+    <img src="photo.jpg" alt="郝灵广" class="header-photo">
+    <div class="header-text">
     <h1>郝灵广</h1>
     <div class="affiliation">
       太原理工大学（Taiyuan University of Technology, TYUT）<br>
@@ -294,6 +309,7 @@
     </div>
     <div class="affiliation" style="margin-top: 12px; font-size: 14px; color: var(--light);">
       &#9878; 太原市万柏林区迎泽西大街79号，太原理工大学，电机馆302室
+    </div>
     </div>
   </div>
 </div>
