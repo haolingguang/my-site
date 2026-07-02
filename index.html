@@ -23,46 +23,36 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      font-family: var(--sans); background: var(--bg); color: var(--text);
+      line-height: 1.8; -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Nav ── */
+    /* Nav */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(250,249,246,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow .3s;
+      background: rgba(250,249,246,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); transition: box-shadow .3s;
     }
     nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-    nav .nav-inner {
+    .nav-inner {
       max-width: 1100px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: center;
       padding: 0 40px; height: 64px;
     }
-    nav .brand {
-      font-family: var(--serif); font-size: 18px; font-weight: 600;
-      color: var(--primary); letter-spacing: 1px;
-    }
+    .brand { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--primary); letter-spacing: 1px; }
     nav ul { list-style: none; display: flex; gap: 28px; }
     nav ul li a {
       text-decoration: none; color: var(--text-light); font-size: 14px;
-      font-weight: 500; letter-spacing: .5px; transition: color .2s;
-      position: relative;
+      font-weight: 500; letter-spacing: .5px; transition: color .2s; position: relative;
     }
     nav ul li a::after {
       content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px; background: var(--accent);
-      transition: width .3s;
+      width: 0; height: 2px; background: var(--accent); transition: width .3s;
     }
     nav ul li a:hover { color: var(--primary); }
     nav ul li a:hover::after { width: 100%; }
 
-    /* ── Hero ── */
+    /* Hero */
     .hero {
       padding: 160px 40px 100px;
       background: linear-gradient(160deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
@@ -74,115 +64,78 @@
     }
     .hero-inner {
       max-width: 1100px; margin: 0 auto;
-      display: flex; align-items: center; gap: 60px;
-      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 60px; position: relative; z-index: 1;
     }
     .hero-avatar {
       width: 200px; height: 200px; border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: 3px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1); border: 3px solid rgba(255,255,255,0.25);
       display: flex; align-items: center; justify-content: center;
-      font-size: 72px; flex-shrink: 0;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      font-size: 72px; flex-shrink: 0; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
-    .hero-text h1 {
-      font-family: var(--serif); font-size: 42px; font-weight: 700;
-      margin-bottom: 8px; letter-spacing: 2px;
-    }
-    .hero-text .title {
-      font-size: 18px; opacity: .85; margin-bottom: 6px;
-      font-weight: 300; letter-spacing: 1px;
-    }
-    .hero-text .research {
-      font-size: 15px; opacity: .65; margin-bottom: 28px;
-      line-height: 1.6;
-    }
+    .hero-text h1 { font-family: var(--serif); font-size: 42px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px; }
+    .hero-text .title { font-size: 18px; opacity: .85; margin-bottom: 6px; font-weight: 300; letter-spacing: 1px; }
+    .hero-text .research { font-size: 15px; opacity: .65; margin-bottom: 28px; line-height: 1.7; }
     .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-links a {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 20px; border-radius: 6px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff; text-decoration: none; font-size: 14px;
-      transition: all .25s;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; text-decoration: none; font-size: 14px; transition: all .25s;
     }
-    .hero-links a:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.4);
-      transform: translateY(-1px);
-    }
+    .hero-links a:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); transform: translateY(-1px); }
 
-    /* ── Sections ── */
+    /* Section */
     .section { max-width: 900px; margin: 0 auto; padding: 80px 40px; }
     .section-title {
       font-family: var(--serif); font-size: 28px; font-weight: 600;
-      color: var(--primary); margin-bottom: 40px;
-      display: flex; align-items: center; gap: 16px;
+      color: var(--primary); margin-bottom: 40px; display: flex; align-items: center; gap: 16px;
     }
     .section-title::before {
       content: ''; width: 4px; height: 28px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-light));
-      border-radius: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-light)); border-radius: 2px;
     }
 
-    /* ── About ── */
-    .about-grid {
-      display: grid; grid-template-columns: 2fr 1fr; gap: 48px;
-      align-items: start;
-    }
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start; }
     .about-text { font-size: 16px; color: var(--text); line-height: 2; }
     .about-text p { margin-bottom: 16px; }
-    .about-info {
-      background: var(--card); border-radius: 12px; padding: 28px;
-      border: 1px solid var(--border);
-    }
+    .about-info { background: var(--card); border-radius: 12px; padding: 28px; border: 1px solid var(--border); }
     .about-info h3 {
       font-size: 15px; font-weight: 600; color: var(--primary);
-      margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
     }
     .info-item { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; }
     .info-item .label { color: var(--text-light); min-width: 56px; flex-shrink: 0; }
     .info-item .value { color: var(--text); font-weight: 500; }
 
-    /* ── Research ── */
-    .research-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+    /* Research */
+    .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .research-card {
       background: var(--card); border-radius: 10px; padding: 28px;
-      border: 1px solid var(--border); transition: all .3s;
-      position: relative; overflow: hidden;
+      border: 1px solid var(--border); transition: all .3s; position: relative; overflow: hidden;
     }
     .research-card::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      opacity: 0; transition: opacity .3s;
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: 0; transition: opacity .3s;
     }
     .research-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
     .research-card:hover::before { opacity: 1; }
     .research-card .icon {
       width: 48px; height: 48px; border-radius: 10px;
       background: linear-gradient(135deg, #fef3e2, #fbd38d);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px;
     }
     .research-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--primary); }
     .research-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
 
-    /* ── Publications ── */
+    /* Publications */
     .pub-list { display: flex; flex-direction: column; gap: 16px; }
     .pub-item {
       background: var(--card); border-radius: 10px; padding: 22px 26px;
       border: 1px solid var(--border); transition: box-shadow .3s;
     }
     .pub-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-    .pub-item .pub-title {
-      font-size: 15px; font-weight: 600; color: var(--primary);
-      margin-bottom: 6px; line-height: 1.5;
-    }
+    .pub-item .pub-title { font-size: 15px; font-weight: 600; color: var(--primary); margin-bottom: 6px; line-height: 1.5; }
     .pub-item .pub-authors { font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
     .pub-item .pub-venue { font-size: 13px; color: var(--accent); font-weight: 500; }
     .pub-item .pub-venue em { font-style: italic; }
@@ -191,9 +144,10 @@
       border-radius: 20px; margin-left: 8px; font-weight: 500; vertical-align: middle;
     }
     .pub-tag.top { background: #fef3e2; color: #c05621; }
+    .pub-tag.mid { background: #e6fffa; color: #285e61; }
     .pub-tag.conf { background: #ebf8ff; color: #2b6cb0; }
 
-    /* ── Patent ── */
+    /* Patent */
     .patent-list { display: flex; flex-direction: column; gap: 12px; }
     .patent-item {
       background: var(--card); border-radius: 10px; padding: 18px 24px;
@@ -201,12 +155,11 @@
     }
     .patent-item .num { color: var(--accent); font-weight: 700; margin-right: 6px; }
 
-    /* ── Projects ── */
+    /* Projects & Honors */
     .proj-list { display: flex; flex-direction: column; gap: 12px; }
     .proj-item {
       background: var(--card); border-radius: 10px; padding: 20px 24px;
-      border: 1px solid var(--border); display: flex; gap: 16px;
-      align-items: flex-start;
+      border: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;
     }
     .proj-item .badge {
       padding: 4px 12px; border-radius: 6px; font-size: 12px;
@@ -214,32 +167,21 @@
     }
     .proj-item .badge.host { background: #fef3e2; color: #c05621; }
     .proj-item .badge.part { background: #ebf8ff; color: #2b6cb0; }
+    .proj-item .badge.honor { background: #f0fff4; color: #276749; }
     .proj-item h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
     .proj-item .meta { font-size: 13px; color: var(--text-light); }
 
-    /* ── Skills ── */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .skill-card {
       background: var(--card); border-radius: 10px; padding: 24px;
       border: 1px solid var(--border); transition: all .3s;
     }
     .skill-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
     .skill-card h3 { font-size: 15px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
-    .skill-card ul { list-style: none; }
-    .skill-card li {
-      font-size: 14px; color: var(--text-light); padding: 4px 0;
-      padding-left: 16px; position: relative;
-    }
-    .skill-card li::before {
-      content: ''; position: absolute; left: 0; top: 12px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent);
-    }
+    .skill-card p { font-size: 14px; color: var(--text-light); line-height: 1.8; }
 
-    /* ── Education ── */
+    /* Education */
     .timeline { position: relative; padding-left: 32px; }
     .timeline::before {
       content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px;
@@ -252,41 +194,29 @@
       width: 12px; height: 12px; border-radius: 50%;
       background: var(--accent); border: 3px solid var(--bg);
     }
-    .timeline-item .year {
-      font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 4px;
-    }
+    .timeline-item .year { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
     .timeline-item h3 { font-size: 16px; font-weight: 600; color: var(--primary); }
     .timeline-item .school { font-size: 14px; color: var(--text-light); }
 
-    /* ── Contact ── */
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
     .contact-card {
       background: var(--card); border-radius: 10px; padding: 24px;
-      border: 1px solid var(--border); text-align: center;
-      transition: all .3s;
+      border: 1px solid var(--border); text-align: center; transition: all .3s;
     }
     .contact-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
     .contact-card .icon {
       width: 48px; height: 48px; border-radius: 50%;
       background: linear-gradient(135deg, #fef3e2, #fbd38d);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin: 0 auto 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 12px;
     }
     .contact-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
     .contact-card p { font-size: 13px; color: var(--text-light); word-break: break-all; line-height: 1.6; }
     .contact-card a { color: var(--primary-light); text-decoration: none; }
     .contact-card a:hover { text-decoration: underline; }
 
-    /* ── Footer ── */
-    footer {
-      text-align: center; padding: 40px; color: var(--text-light);
-      font-size: 13px; border-top: 1px solid var(--border);
-    }
+    footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 13px; border-top: 1px solid var(--border); }
 
-    /* ── Responsive ── */
     @media (max-width: 768px) {
       .hero-inner { flex-direction: column; text-align: center; }
       .hero-avatar { width: 140px; height: 140px; font-size: 56px; }
@@ -299,11 +229,7 @@
       .proj-item { flex-direction: column; gap: 8px; }
     }
 
-    /* ── Animations ── */
-    .fade-in {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
@@ -316,6 +242,7 @@
       <li><a href="#about">关于</a></li>
       <li><a href="#research">研究</a></li>
       <li><a href="#publications">论文</a></li>
+      <li><a href="#patents">专利</a></li>
       <li><a href="#projects">项目</a></li>
       <li><a href="#education">学历</a></li>
       <li><a href="#contact">联系</a></li>
@@ -329,10 +256,10 @@
     <div class="hero-avatar">👨‍🔬</div>
     <div class="hero-text">
       <h1>郝灵广</h1>
-      <div class="title">太原理工大学 · 讲师 / 硕士生导师</div>
+      <div class="title">太原理工大学（Taiyuan University of Technology, TYUT）</div>
       <div class="research">
-        研究方向：可信联邦学习 · 计算机视觉 · 对抗攻击与防御<br>
-        控制科学与工程
+        控制科学与工程 · 博士<br>
+        研究方向：可信联邦学习 · 计算机视觉 · 对抗攻击与防御
       </div>
       <div class="hero-links">
         <a href="mailto:haolingguang@tyut.edu.cn">✉ 邮件</a>
@@ -348,18 +275,19 @@
   <h2 class="section-title">关于我</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>欢迎来到我的主页！我是太原理工大学的教师，博士毕业于东华大学控制科学与工程专业，研究方向聚焦于可信联邦学习与计算机视觉。</p>
-      <p>我的研究围绕联邦学习框架下的安全性问题展开，包括联邦后门攻击、对抗样本的可迁移性、深度神经网络鲁棒性验证等。擅长运用深度学习方法解决图像识别、生成、去噪等视觉任务，并通过攻击算法验证联邦学习框架的安全性与鲁棒性。</p>
-      <p>博士期间担任实验室助管及博士生班长，具有较强的组织协调能力与团队合作精神。</p>
+      <p>欢迎来到我的主页！我毕业于东华大学控制科学与工程专业，获博士学位，现就职于太原理工大学。</p>
+      <p>我的研究聚焦于联邦学习框架下的安全性与鲁棒性问题，包括多目标联邦后门攻击、对抗样本可迁移性提升、基于隐私推理的后门攻击等。擅长运用深度学习方法解决计算机视觉任务（图像识别、生成、去噪），并通过攻击算法验证联邦学习框架的鲁棒性。</p>
+      <p>博士期间担任实验室助管，负责统筹实验室各项事务；同时担任博士生班长。熟练运用 PyTorch、Keras 等深度学习框架，以及 Linux、Git、SSH、Docker 等系统工具。</p>
     </div>
     <div class="about-info">
       <h3>基本信息</h3>
       <div class="info-item"><span class="label">姓名</span><span class="value">郝灵广</span></div>
       <div class="info-item"><span class="label">性别</span><span class="value">男</span></div>
+      <div class="info-item"><span class="label">出生</span><span class="value">1997.02</span></div>
       <div class="info-item"><span class="label">学位</span><span class="value">博士</span></div>
-      <div class="info-item"><span class="label">单位</span><span class="value">太原理工大学</span></div>
-      <div class="info-item"><span class="label">专业</span><span class="value">控制科学与工程</span></div>
-      <div class="info-item"><span class="label">邮箱</span><span class="value" style="font-size:12px">haolingguang@tyut.edu.cn</span></div>
+      <div class="info-item"><span class="label">专业</span><span class="value" style="font-size:12px">控制科学与工程</span></div>
+      <div class="info-item"><span class="label">院校</span><span class="value">太原理工大学</span></div>
+      <div class="info-item"><span class="label">邮箱</span><span class="value" style="font-size:11px">haolingguang@tyut.edu.cn</span></div>
       <div class="info-item"><span class="label">电话</span><span class="value">18317089686</span></div>
     </div>
   </div>
@@ -372,7 +300,7 @@
     <div class="research-card fade-in">
       <div class="icon">🔐</div>
       <h3>可信联邦学习</h3>
-      <p>研究联邦学习框架下的安全威胁与防御机制，包括后门攻击、隐私推理攻击及鲁棒性增强方法。</p>
+      <p>联邦学习框架下的安全威胁与防御机制，包括多目标后门攻击、基于隐私推理的后门攻击及鲁棒性增强方法。</p>
     </div>
     <div class="research-card fade-in">
       <div class="icon">👁️</div>
@@ -382,67 +310,112 @@
     <div class="research-card fade-in">
       <div class="icon">⚔️</div>
       <h3>对抗攻击与防御</h3>
-      <p>对抗样本的可迁移性提升、多目标后门攻击策略及防御框架设计。</p>
+      <p>对抗样本可迁移性提升、多代理模型攻击、随机串行攻击策略及防御框架设计。</p>
     </div>
   </div>
 </section>
 
 <!-- Publications -->
 <section class="section" id="publications">
-  <h2 class="section-title">代表性论文</h2>
+  <h2 class="section-title">学术论文</h2>
   <div class="pub-list">
     <div class="pub-item fade-in">
       <div class="pub-title">
-        Multi-target federated backdoor attack based on feature aggregation
+        [1] Multi-target federated backdoor attack based on feature aggregation
         <span class="pub-tag top">SCI 一区 TOP · CCF B</span>
       </div>
-      <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, Xuesong Tang</div>
+      <div class="pub-authors">Lingguag Hao, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
       <div class="pub-venue"><em>Pattern Recognition</em>, 2026, 172: Part A</div>
     </div>
     <div class="pub-item fade-in">
       <div class="pub-title">
-        A hypothetical defenses-based training framework for generating transferable adversarial examples
+        [2] A hypothetical defenses-based training framework for generating transferable adversarial examples
         <span class="pub-tag top">SCI 一区 TOP · CCF C</span>
       </div>
-      <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Yaochu Jin, Hongzhi Zhao</div>
+      <div class="pub-authors">Lingguang Hao, Kuangrong Hao*, Yaochu Jin, and Hongzhi Zhao</div>
       <div class="pub-venue"><em>Knowledge-Based Systems</em>, 2024, 305: 112602</div>
     </div>
     <div class="pub-item fade-in">
       <div class="pub-title">
-        Boosting the transferability of adversarial examples via stochastic serial attack
+        [3] Boosting the transferability of adversarial examples via stochastic serial attack
         <span class="pub-tag top">SCI 一区 TOP · CCF B</span>
       </div>
-      <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, Xuesong Tang</div>
+      <div class="pub-authors">Lingguang Hao, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
       <div class="pub-venue"><em>Neural Networks</em>, 2022, 150: 58-67</div>
     </div>
     <div class="pub-item fade-in">
       <div class="pub-title">
-        Remix: Towards the Transferability of Adversarial Examples
+        [4] A Multi-Proxy Model Based Transfer Attack via Multi-Objective Optimization
+        <span class="pub-tag conf">会议论文</span>
+      </div>
+      <div class="pub-authors">Lingguang Hao, Kuangrong Hao*, Zhibo Cao, and Lei Chen</div>
+      <div class="pub-venue">IEEE 14th Data Driven Control and Learning Systems (DDCLS), 2025, pp. 1234-1239</div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-title">
+        [5] Remix: Towards the Transferability of Adversarial Examples
         <span class="pub-tag top">SCI 一区 TOP · CCF B</span>
       </div>
-      <div class="pub-authors">Hongzhi Zhao, <strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, Xin Cai</div>
+      <div class="pub-authors">Hongzhi Zhao, Lingguang Hao, Kuangrong Hao*, Bing Wei, and Xin Cai</div>
       <div class="pub-venue"><em>Neural Networks</em>, 2023, 163: 367-378</div>
     </div>
     <div class="pub-item fade-in">
       <div class="pub-title">
-        A Multi-Proxy Model Based Transfer Attack via Multi-Objective Optimization
-        <span class="pub-tag conf">会议论文</span>
+        [6] Show, tell and rectify: Boost image caption generation via an output rectifier
+        <span class="pub-tag mid">SCI 二区 TOP · CCF C</span>
       </div>
-      <div class="pub-authors"><strong>Lingguang Hao</strong>, Kuangrong Hao*, Zhibo Cao, Lei Chen</div>
-      <div class="pub-venue">IEEE 14th DDCLS, 2025, pp. 1234-1239</div>
+      <div class="pub-authors">Guowei Ge, Yufeng Han, Lingguang Hao, Kuangrong Hao*, Bing Wei, and Xuesong Tang</div>
+      <div class="pub-venue"><em>Neurocomputing</em>, 2024, 585: 127651</div>
     </div>
     <div class="pub-item fade-in">
       <div class="pub-title">
-        Show, tell and rectify: Boost image caption generation via an output rectifier
-        <span class="pub-tag top">SCI 二区 TOP · CCF C</span>
+        [7] MS-FTSCNN: An EEG emotion recognition method from the combination of multi-domain features
+        <span class="pub-tag mid">SCI 二区</span>
       </div>
-      <div class="pub-authors">Guowei Ge, Yufeng Han, <strong>Lingguang Hao</strong>, Kuangrong Hao*, Bing Wei, Xuesong Tang</div>
-      <div class="pub-venue"><em>Neurocomputing</em>, 2024, 585: 127651</div>
+      <div class="pub-authors">Feifei Li, Kuangrong Hao, Bing Wei*, Lingguang Hao, and Lihong Ren</div>
+      <div class="pub-venue"><em>Biomedical Signal Processing and Control</em>, 2024, 88: 105690</div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-title">
+        [8] Causal inference of multivariate time series in complex industrial systems
+        <span class="pub-tag top">SCI 一区 TOP · CCF B</span>
+      </div>
+      <div class="pub-authors">Xiaoxue Liang, Kuangrong Hao*, Lei Chen, Xin Cai, and Lingguang Hao</div>
+      <div class="pub-venue"><em>Advanced Engineering Informatics</em>, 2024, 59: 102320</div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-title">
+        [9] IDC: Boost Text-to-image Retrieval via Indirect and Direct Connections
+        <span class="pub-tag conf">CCF B · 会议论文</span>
+      </div>
+      <div class="pub-authors">Guowei Ge, Kuangrong Hao*, and Lingguang Hao</div>
+      <div class="pub-venue">LREC-COLING, 2024</div>
+    </div>
+    <div class="pub-item fade-in">
+      <div class="pub-title">
+        [10] Backdoor Attack Based on Privacy Inference against Federated Learning
+        <span class="pub-tag conf">会议论文</span>
+      </div>
+      <div class="pub-authors">Do Wu, Lingguang Hao, Bing Wei*, Kuangrong Hao, Tao Han, and Langping He</div>
+      <div class="pub-venue">7th International Symposium on Autonomous Systems (ISAS), 2024</div>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
+<!-- Patents -->
+<section class="section" id="patents">
+  <h2 class="section-title">发明专利</h2>
+  <div class="patent-list">
+    <div class="patent-item fade-in">
+      <span class="num">[1]</span> 郝矿荣，<strong>郝灵广</strong>，隗兵，唐雪嵩. 一种基于特征聚合的个性化联邦学习的后门攻击方法. 2024. （已受理，公开号：CN119323697A）
+    </div>
+    <div class="patent-item fade-in">
+      <span class="num">[2]</span> 郝矿荣，杜少帅，张海超，<strong>郝灵广</strong>，隗兵，唐雪嵩. 基于 YOLO 的目标检测模型训练方法及其应用和装置. 2022. （已受理，公开号：CN115527089A）
+    </div>
+  </div>
+</section>
+
+<!-- Projects & Honors -->
 <section class="section" id="projects">
   <h2 class="section-title">科研项目与荣誉</h2>
   <div class="proj-list">
@@ -457,7 +430,7 @@
       <div class="badge part">参与</div>
       <div>
         <h3>多模态测试系统开发</h3>
-        <div class="meta">企业横向项目 · 2024–2026</div>
+        <div class="meta">企业横向项目 · 2024–2026（主要参与人员）</div>
       </div>
     </div>
     <div class="proj-item fade-in">
@@ -475,10 +448,17 @@
       </div>
     </div>
     <div class="proj-item fade-in">
-      <div class="badge host" style="background:#ebf8ff;color:#2b6cb0">荣誉</div>
+      <div class="badge honor">荣誉</div>
       <div>
         <h3>"华为杯"第十八届全国研究生数学建模竞赛 三等奖</h3>
         <div class="meta">2021</div>
+      </div>
+    </div>
+    <div class="proj-item fade-in">
+      <div class="badge honor">荣誉</div>
+      <div>
+        <h3>东华大学五四表彰信息科学与技术学院"优秀团员"称号</h3>
+        <div class="meta">2022</div>
       </div>
     </div>
   </div>
@@ -489,41 +469,16 @@
   <h2 class="section-title">专业技能</h2>
   <div class="skills-grid">
     <div class="skill-card fade-in">
-      <h3>研究工具</h3>
-      <ul>
-        <li>联邦学习框架（FATE、PySyft）</li>
-        <li>对抗攻击与鲁棒性评估</li>
-        <li>图像识别 / 生成 / 去噪</li>
-      </ul>
+      <h3>研究能力</h3>
+      <p>擅长联邦学习框架下的计算机视觉任务研究，包括图像识别、生成、去噪等，运用攻击算法验证联邦学习框架的鲁棒性。</p>
     </div>
     <div class="skill-card fade-in">
       <h3>深度学习</h3>
-      <ul>
-        <li>PyTorch / Keras</li>
-        <li>Transformer / CNN / GAN</li>
-        <li>模型训练与优化</li>
-      </ul>
+      <p>熟练运用 PyTorch、Keras 等深度学习框架，具备 Transformer、CNN、GAN 等模型的开发与优化经验。</p>
     </div>
     <div class="skill-card fade-in">
       <h3>系统工具</h3>
-      <ul>
-        <li>Linux / Git / SSH / Docker</li>
-        <li>多 GPU 分布式训练</li>
-        <li>实验管理与复现</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Patents -->
-<section class="section" id="patents">
-  <h2 class="section-title">发明专利</h2>
-  <div class="patent-list">
-    <div class="patent-item fade-in">
-      <span class="num">[1]</span> 郝矿荣，<strong>郝灵广</strong>，隗兵，唐雪嵩. 一种基于特征聚合的个性化联邦学习的后门攻击方法. 2024. （已受理，公开号：CN119323697A）
-    </div>
-    <div class="patent-item fade-in">
-      <span class="num">[2]</span> 郝矿荣，杜少帅，张海超，<strong>郝灵广</strong>，隗兵，唐雪嵩. 基于 YOLO 的目标检测模型训练方法及其应用和装置. 2022. （已受理，公开号：CN115527089A）
+      <p>熟练运用 Linux、Git、SSH、Docker 等服务器及代码相关操作，具备多 GPU 分布式训练经验。</p>
     </div>
   </div>
 </section>
@@ -573,15 +528,13 @@
 </section>
 
 <footer>
-  &copy; 2026 郝灵广 · 太原理工大学
+  &copy; 2026 郝灵广 · 太原理工大学（Taiyuan University of Technology, TYUT）
 </footer>
 
 <script>
   const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  });
-  const observer = new IntersectionObserver((entries) => {
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
